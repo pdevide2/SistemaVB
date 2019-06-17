@@ -34,7 +34,6 @@ Partial Class funcionarios
         Me.Label6 = New System.Windows.Forms.Label()
         Me.txtEndereco = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.dtData = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.txtTelefone = New System.Windows.Forms.MaskedTextBox()
@@ -46,13 +45,16 @@ Partial Class funcionarios
         Me.btnExcluir = New System.Windows.Forms.Button()
         Me.cbSexo = New System.Windows.Forms.ComboBox()
         Me.cbTurno = New System.Windows.Forms.ComboBox()
+        Me.dtData = New System.Windows.Forms.DateTimePicker()
+        Me.rbNome = New System.Windows.Forms.RadioButton()
+        Me.rbCPF = New System.Windows.Forms.RadioButton()
         CType(Me.dg, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(566, 16)
+        Me.Label1.Location = New System.Drawing.Point(362, 11)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(40, 13)
         Me.Label1.TabIndex = 0
@@ -60,7 +62,7 @@ Partial Class funcionarios
         '
         'txtBuscar
         '
-        Me.txtBuscar.Location = New System.Drawing.Point(615, 12)
+        Me.txtBuscar.Location = New System.Drawing.Point(615, 7)
         Me.txtBuscar.Name = "txtBuscar"
         Me.txtBuscar.Size = New System.Drawing.Size(173, 20)
         Me.txtBuscar.TabIndex = 1
@@ -139,13 +141,6 @@ Partial Class funcionarios
         Me.Label7.Size = New System.Drawing.Size(53, 13)
         Me.Label7.TabIndex = 8
         Me.Label7.Text = "Endereço"
-        '
-        'dtData
-        '
-        Me.dtData.Location = New System.Drawing.Point(367, 133)
-        Me.dtData.Name = "dtData"
-        Me.dtData.Size = New System.Drawing.Size(157, 20)
-        Me.dtData.TabIndex = 17
         '
         'Label8
         '
@@ -237,10 +232,40 @@ Partial Class funcionarios
         'cbTurno
         '
         Me.cbTurno.FormattingEnabled = True
-        Me.cbTurno.Location = New System.Drawing.Point(72, 129)
+        Me.cbTurno.Location = New System.Drawing.Point(72, 133)
         Me.cbTurno.Name = "cbTurno"
         Me.cbTurno.Size = New System.Drawing.Size(121, 21)
         Me.cbTurno.TabIndex = 26
+        '
+        'dtData
+        '
+        Me.dtData.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.dtData.Location = New System.Drawing.Point(366, 133)
+        Me.dtData.Name = "dtData"
+        Me.dtData.Size = New System.Drawing.Size(200, 20)
+        Me.dtData.TabIndex = 27
+        '
+        'rbNome
+        '
+        Me.rbNome.AutoSize = True
+        Me.rbNome.Location = New System.Drawing.Point(427, 9)
+        Me.rbNome.Name = "rbNome"
+        Me.rbNome.Size = New System.Drawing.Size(53, 17)
+        Me.rbNome.TabIndex = 28
+        Me.rbNome.TabStop = True
+        Me.rbNome.Text = "Nome"
+        Me.rbNome.UseVisualStyleBackColor = True
+        '
+        'rbCPF
+        '
+        Me.rbCPF.AutoSize = True
+        Me.rbCPF.Location = New System.Drawing.Point(519, 9)
+        Me.rbCPF.Name = "rbCPF"
+        Me.rbCPF.Size = New System.Drawing.Size(45, 17)
+        Me.rbCPF.TabIndex = 29
+        Me.rbCPF.TabStop = True
+        Me.rbCPF.Text = "CPF"
+        Me.rbCPF.UseVisualStyleBackColor = True
         '
         'funcionarios
         '
@@ -248,6 +273,9 @@ Partial Class funcionarios
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.rbCPF)
+        Me.Controls.Add(Me.rbNome)
+        Me.Controls.Add(Me.dtData)
         Me.Controls.Add(Me.cbTurno)
         Me.Controls.Add(Me.cbSexo)
         Me.Controls.Add(Me.btnExcluir)
@@ -257,7 +285,6 @@ Partial Class funcionarios
         Me.Controls.Add(Me.dg)
         Me.Controls.Add(Me.txtCPF)
         Me.Controls.Add(Me.txtTelefone)
-        Me.Controls.Add(Me.dtData)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.txtEmail)
@@ -291,7 +318,6 @@ Partial Class funcionarios
     Friend WithEvents Label6 As Label
     Friend WithEvents txtEndereco As TextBox
     Friend WithEvents Label7 As Label
-    Friend WithEvents dtData As TextBox
     Friend WithEvents Label8 As Label
     Friend WithEvents Label9 As Label
     Friend WithEvents txtTelefone As MaskedTextBox
@@ -303,4 +329,7 @@ Partial Class funcionarios
     Friend WithEvents btnExcluir As Button
     Friend WithEvents cbSexo As ComboBox
     Friend WithEvents cbTurno As ComboBox
+    Friend WithEvents dtData As DateTimePicker
+    Friend WithEvents rbNome As RadioButton
+    Friend WithEvents rbCPF As RadioButton
 End Class
