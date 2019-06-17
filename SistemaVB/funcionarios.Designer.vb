@@ -185,7 +185,7 @@ Partial Class funcionarios
         '
         Me.dg.BackgroundColor = System.Drawing.Color.White
         Me.dg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dg.Location = New System.Drawing.Point(18, 186)
+        Me.dg.Location = New System.Drawing.Point(12, 159)
         Me.dg.Name = "dg"
         Me.dg.Size = New System.Drawing.Size(770, 182)
         Me.dg.TabIndex = 20
