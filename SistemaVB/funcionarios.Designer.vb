@@ -48,6 +48,10 @@ Partial Class funcionarios
         Me.dtData = New System.Windows.Forms.DateTimePicker()
         Me.rbNome = New System.Windows.Forms.RadioButton()
         Me.rbCPF = New System.Windows.Forms.RadioButton()
+        Me.txtBuscaCPF = New System.Windows.Forms.MaskedTextBox()
+        Me.lblTotal = New System.Windows.Forms.Label()
+        Me.lblTotalReg = New System.Windows.Forms.Label()
+        Me.btnUndo = New System.Windows.Forms.Button()
         CType(Me.dg, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -171,17 +175,21 @@ Partial Class funcionarios
         'txtCPF
         '
         Me.txtCPF.Location = New System.Drawing.Point(615, 63)
-        Me.txtCPF.Mask = "000.000.000-00"
+        Me.txtCPF.Mask = "999,999,999-99"
         Me.txtCPF.Name = "txtCPF"
         Me.txtCPF.Size = New System.Drawing.Size(100, 20)
         Me.txtCPF.TabIndex = 19
         '
         'dg
         '
+        Me.dg.AllowUserToAddRows = False
+        Me.dg.AllowUserToDeleteRows = False
         Me.dg.BackgroundColor = System.Drawing.Color.White
         Me.dg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dg.Location = New System.Drawing.Point(12, 159)
         Me.dg.Name = "dg"
+        Me.dg.ReadOnly = True
+        Me.dg.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dg.Size = New System.Drawing.Size(770, 182)
         Me.dg.TabIndex = 20
         '
@@ -197,7 +205,7 @@ Partial Class funcionarios
         'btnSalvar
         '
         Me.btnSalvar.Image = CType(resources.GetObject("btnSalvar.Image"), System.Drawing.Image)
-        Me.btnSalvar.Location = New System.Drawing.Point(321, 374)
+        Me.btnSalvar.Location = New System.Drawing.Point(317, 374)
         Me.btnSalvar.Name = "btnSalvar"
         Me.btnSalvar.Size = New System.Drawing.Size(69, 69)
         Me.btnSalvar.TabIndex = 22
@@ -206,7 +214,7 @@ Partial Class funcionarios
         'btnEditar
         '
         Me.btnEditar.Image = CType(resources.GetObject("btnEditar.Image"), System.Drawing.Image)
-        Me.btnEditar.Location = New System.Drawing.Point(402, 374)
+        Me.btnEditar.Location = New System.Drawing.Point(471, 374)
         Me.btnEditar.Name = "btnEditar"
         Me.btnEditar.Size = New System.Drawing.Size(69, 69)
         Me.btnEditar.TabIndex = 23
@@ -215,7 +223,7 @@ Partial Class funcionarios
         'btnExcluir
         '
         Me.btnExcluir.Image = Global.SistemaVB.My.Resources.Resources.bt_excluir
-        Me.btnExcluir.Location = New System.Drawing.Point(483, 374)
+        Me.btnExcluir.Location = New System.Drawing.Point(548, 374)
         Me.btnExcluir.Name = "btnExcluir"
         Me.btnExcluir.Size = New System.Drawing.Size(69, 69)
         Me.btnExcluir.TabIndex = 24
@@ -224,6 +232,7 @@ Partial Class funcionarios
         'cbSexo
         '
         Me.cbSexo.FormattingEnabled = True
+        Me.cbSexo.Items.AddRange(New Object() {"Masculino", "Feminino"})
         Me.cbSexo.Location = New System.Drawing.Point(365, 62)
         Me.cbSexo.Name = "cbSexo"
         Me.cbSexo.Size = New System.Drawing.Size(121, 21)
@@ -232,6 +241,7 @@ Partial Class funcionarios
         'cbTurno
         '
         Me.cbTurno.FormattingEnabled = True
+        Me.cbTurno.Items.AddRange(New Object() {"Manhã", "Tarde", "Noite", "Madrugada"})
         Me.cbTurno.Location = New System.Drawing.Point(72, 133)
         Me.cbTurno.Name = "cbTurno"
         Me.cbTurno.Size = New System.Drawing.Size(121, 21)
@@ -248,6 +258,7 @@ Partial Class funcionarios
         'rbNome
         '
         Me.rbNome.AutoSize = True
+        Me.rbNome.Checked = True
         Me.rbNome.Location = New System.Drawing.Point(427, 9)
         Me.rbNome.Name = "rbNome"
         Me.rbNome.Size = New System.Drawing.Size(53, 17)
@@ -267,12 +278,52 @@ Partial Class funcionarios
         Me.rbCPF.Text = "CPF"
         Me.rbCPF.UseVisualStyleBackColor = True
         '
+        'txtBuscaCPF
+        '
+        Me.txtBuscaCPF.Location = New System.Drawing.Point(615, 33)
+        Me.txtBuscaCPF.Mask = "999,999,999-99"
+        Me.txtBuscaCPF.Name = "txtBuscaCPF"
+        Me.txtBuscaCPF.Size = New System.Drawing.Size(100, 20)
+        Me.txtBuscaCPF.TabIndex = 30
+        Me.txtBuscaCPF.Visible = False
+        '
+        'lblTotal
+        '
+        Me.lblTotal.AutoSize = True
+        Me.lblTotal.Location = New System.Drawing.Point(686, 344)
+        Me.lblTotal.Name = "lblTotal"
+        Me.lblTotal.Size = New System.Drawing.Size(37, 13)
+        Me.lblTotal.TabIndex = 31
+        Me.lblTotal.Text = "Total.:"
+        '
+        'lblTotalReg
+        '
+        Me.lblTotalReg.AutoSize = True
+        Me.lblTotalReg.Location = New System.Drawing.Point(737, 344)
+        Me.lblTotalReg.Name = "lblTotalReg"
+        Me.lblTotalReg.Size = New System.Drawing.Size(10, 13)
+        Me.lblTotalReg.TabIndex = 32
+        Me.lblTotalReg.Text = "."
+        '
+        'btnUndo
+        '
+        Me.btnUndo.Image = CType(resources.GetObject("btnUndo.Image"), System.Drawing.Image)
+        Me.btnUndo.Location = New System.Drawing.Point(394, 374)
+        Me.btnUndo.Name = "btnUndo"
+        Me.btnUndo.Size = New System.Drawing.Size(69, 69)
+        Me.btnUndo.TabIndex = 33
+        Me.btnUndo.UseVisualStyleBackColor = True
+        '
         'funcionarios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.btnUndo)
+        Me.Controls.Add(Me.lblTotalReg)
+        Me.Controls.Add(Me.lblTotal)
+        Me.Controls.Add(Me.txtBuscaCPF)
         Me.Controls.Add(Me.rbCPF)
         Me.Controls.Add(Me.rbNome)
         Me.Controls.Add(Me.dtData)
@@ -332,4 +383,8 @@ Partial Class funcionarios
     Friend WithEvents dtData As DateTimePicker
     Friend WithEvents rbNome As RadioButton
     Friend WithEvents rbCPF As RadioButton
+    Friend WithEvents txtBuscaCPF As MaskedTextBox
+    Friend WithEvents lblTotal As Label
+    Friend WithEvents lblTotalReg As Label
+    Friend WithEvents btnUndo As Button
 End Class

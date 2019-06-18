@@ -1,43 +1,41 @@
 -- criar as tabelas
-create table funcionarios (
-id_func int primary key identity(1,1) not null,
+create table clientes (
+id_cliente int primary key identity(1,1) not null,
 nome varchar(60) not null,
 sexo varchar(20) not null,
 cpf varchar(30) not null,
 endereco varchar(100)  null,
 telefone varchar(30) null, 
 email varchar(60) null,
-turno varchar(30) null,
-data_contratado datetime
+data_cadastro datetime
 )
 go
 
 -- criar os procedimentos
-create procedure sp_salvarfunc
+create procedure sp_salvarcli
 @nome varchar(60),
 @sexo varchar(20),
 @cpf varchar(30),
 @endereco varchar(100),
 @telefone varchar(30),
 @email varchar(60),
-@turno varchar(30),
-@data_contratado datetime,
+@data_cadastro datetime,
 @mensagem varchar(100) output
 as
 begin
 
-if exists(select 1 from funcionarios where cpf=@cpf)
+if exists(select 1 from clientes where cpf=@cpf)
 	SET @MENSAGEM = 'Numero do CPF '+@cpf + ' já está registrado!'
 else
 begin
-	insert into funcionarios values(@nome,@sexo,@cpf,@endereco,@telefone,@email,@turno,@data_contratado)
-	set @mensagem = 'Funcionario registrado com sucesso!'
+	insert into clientes values(@nome,@sexo,@cpf,@endereco,@telefone,@email,@data_cadastro)
+	set @mensagem = 'Cliente registrado com sucesso!'
 end
 
 end
 go
 
-create procedure sp_editarfunc
+create procedure sp_editarcli
 @nome varchar(60),
 @sexo varchar(20),
 @cpf varchar(30),
@@ -50,14 +48,13 @@ create procedure sp_editarfunc
 as
 begin
 
-	update funcionarios set
+	update clientes set
 	nome = @nome,
 	sexo = @sexo, 
 	endereco = @endereco,
 	telefone = @telefone,
 	email = @email,
-	turno = @turno,
-	data_contratado = @data_contratado
+	data_cadastro = @data_contratado
 	where cpf = @cpf
 
 	set @mensagem = 'Dados atualizados com sucesso!'
@@ -65,38 +62,34 @@ begin
 end
 go
 
-create procedure sp_buscarFuncNome
+create procedure sp_buscarcliNome
 @nome varchar(60) 
 as
 begin
-	select * from funcionarios
+	select * from clientes
 	where nome like @nome + '%'
 end
 go
 
-create procedure sp_buscarFuncCPF
+create procedure sp_buscarcliCPF
 @cpf varchar(30) 
 as
 begin
-	select * from funcionarios
+	select * from clientes
 	where cpf like @cpf + '%'
 end
 go
 
-create procedure sp_ExcluirFuncPorCPF
+create procedure sp_ExcluirCliPorCPF
 @cpf varchar(30) ,
 @mensagem varchar(100) output
 as
 begin
-	Delete from funcionarios
+	Delete from clientes
 	where cpf = @cpf 
 	set @mensagem = 'Registro Excluído com sucesso!'
 end
 go
 
 
---insert inicial
-insert into funcionarios values('Admin','Masculino','000.000.000-00','Rua X','(00) 00000-0000','Admin@hotmail.com','Manhã',getdate())
-go
 
-select * from funcionarios

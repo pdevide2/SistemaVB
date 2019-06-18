@@ -1,15 +1,15 @@
 ﻿Imports System.Data.SqlClient
 Module Conexao
-    Public conexao As New SqlConnection("Server = .\DEVELOPER; Database=dbSistemaVB; Trusted_Connection=True")
+    Public conn As New SqlConnection("Server = .\DEVELOPER; Database=dbSistemaVB; Trusted_Connection=True")
 
     Sub abrir()
-        If conexao.State = 0 Then
-            conexao.Open()
+        If conn.State = 0 Then
+            conn.Open()
         End If
     End Sub
     Sub fechar()
-        If conexao.State = 1 Then
-            conexao.Close()
+        If conn.State = 1 Then
+            conn.Close()
         End If
     End Sub
 End Module
