@@ -1,9 +1,9 @@
 ﻿Imports System.Data.SqlClient
 
 
-Public Class funcionarios
+Public Class Clientes
     Private intOperacao As Integer = Operacao.Consulta
-    Private Sub Funcionarios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub Clientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         intOperacao = Operacao.Consulta
         HabilitarCampos(intOperacao)
 
@@ -43,7 +43,7 @@ Public Class funcionarios
         Dim da As SqlDataAdapter
         Try
             abrir()
-            da = New SqlDataAdapter("select * from funcionarios", conn)
+            da = New SqlDataAdapter("select * from Clientes", conn)
             da.Fill(dt)
             dg.DataSource = dt
 
@@ -70,7 +70,7 @@ Public Class funcionarios
         dg.Columns(6).Width = 130
         dg.Columns(7).HeaderText = "Turno"
         dg.Columns(7).Width = 70
-        dg.Columns(8).HeaderText = "Data Contratação"
+        dg.Columns(8).HeaderText = "Data Cadastro"
 
 
     End Sub
@@ -90,7 +90,7 @@ Public Class funcionarios
         txtNome.Enabled = blnMode
         txtTelefone.Enabled = blnMode
         cbSexo.Enabled = blnMode
-        cbTurno.Enabled = blnMode
+        'cbTurno.Enabled = blnMode
         dtData.Enabled = blnMode
         txtEmail.Enabled = blnMode
 
@@ -103,7 +103,7 @@ Public Class funcionarios
         txtNome.Text = ""
         txtTelefone.Text = ""
         cbSexo.Text = ""
-        cbTurno.Text = ""
+        'cbTurno.Text = ""
         dtData.Value = DateTime.Now
 
     End Sub
@@ -153,9 +153,9 @@ Public Class funcionarios
             Try
                 abrir()
                 If intOperacao = Operacao.Novo Then
-                    cmd = New SqlCommand("sp_salvarfunc", conn)
+                    cmd = New SqlCommand("sp_salvarcli", conn)
                 Else
-                    cmd = New SqlCommand("sp_editarfunc", conn)
+                    cmd = New SqlCommand("sp_editarcli", conn)
                 End If
 
                 cmd.CommandType = CommandType.StoredProcedure
@@ -165,8 +165,8 @@ Public Class funcionarios
                 cmd.Parameters.AddWithValue("@endereco", txtEndereco.Text)
                 cmd.Parameters.AddWithValue("@telefone", txtTelefone.Text)
                 cmd.Parameters.AddWithValue("@email", txtEmail.Text)
-                cmd.Parameters.AddWithValue("@turno", cbTurno.Text)
-                cmd.Parameters.AddWithValue("@data_contratado", CDate(dtData.Text))
+                'cmd.Parameters.AddWithValue("@turno", cbTurno.Text)
+                cmd.Parameters.AddWithValue("@data_cadastro", CDate(dtData.Text))
                 cmd.Parameters.Add("@mensagem", SqlDbType.VarChar, 100).Direction = 2
 
                 cmd.ExecuteNonQuery()
@@ -211,7 +211,7 @@ Public Class funcionarios
         txtEndereco.Text = dg.CurrentRow.Cells(4).Value
         txtTelefone.Text = dg.CurrentRow.Cells(5).Value
         txtEmail.Text = dg.CurrentRow.Cells(6).Value
-        cbTurno.Text = dg.CurrentRow.Cells(7).Value
+        'cbTurno.Text = dg.CurrentRow.Cells(7).Value
         dtData.Value = dg.CurrentRow.Cells(8).Value
 
 
@@ -227,7 +227,7 @@ Public Class funcionarios
 
             Try
                 abrir()
-                cmd = New SqlCommand("sp_ExcluirFuncPorCPF", conn)
+                cmd = New SqlCommand("sp_ExcluircliPorCPF", conn)
                 cmd.CommandType = CommandType.StoredProcedure
                 cmd.Parameters.AddWithValue("@cpf", txtCPF.Text)
                 cmd.Parameters.Add("@mensagem", SqlDbType.VarChar, 100).Direction = 2
@@ -281,7 +281,7 @@ Public Class funcionarios
         Dim da As SqlDataAdapter
         Try
             abrir()
-            da = New SqlDataAdapter("sp_buscarFuncCPF", conn)
+            da = New SqlDataAdapter("sp_buscarcliCPF", conn)
             da.SelectCommand.CommandType = CommandType.StoredProcedure
             da.SelectCommand.Parameters.AddWithValue("@cpf", txtBuscaCPF.Text)
             da.Fill(dt)
@@ -329,7 +329,7 @@ Public Class funcionarios
         Dim da As SqlDataAdapter
         Try
             abrir()
-            da = New SqlDataAdapter("sp_buscarFuncNome", conn)
+            da = New SqlDataAdapter("sp_buscarcliNome", conn)
             da.SelectCommand.CommandType = CommandType.StoredProcedure
             da.SelectCommand.Parameters.AddWithValue("@nome", txtBuscar.Text)
             da.Fill(dt)
