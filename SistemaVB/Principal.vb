@@ -13,4 +13,9 @@
         Dim form = New Clientes
         form.Show()
     End Sub
+
+    Private Sub ProdutosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProdutosToolStripMenuItem.Click
+        Dim form = New Produtos
+        form.Show()
+    End Sub
 End Class

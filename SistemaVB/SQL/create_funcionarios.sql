@@ -100,3 +100,19 @@ insert into funcionarios values('Admin','Masculino','000.000.000-00','Rua X','(0
 go
 
 select * from funcionarios
+
+go
+
+alter table funcionarios 
+add senha varbinary(200) not null default(EncryptByPassPhrase('key', '1234' ))
+go
+
+
+/* Rotina para comparar senha */
+declare @encrypt varbinary(200) 
+select @encrypt = EncryptByPassPhrase('key', '12w09i12w23eAgoraOBichoVaiPegar' )
+select @encrypt 
+ 
+select convert(varchar(100),DecryptByPassPhrase('key', @encrypt ))
+
+select nome, convert(varchar(100),DecryptByPassPhrase('key', senha )) senha2 from funcionarios

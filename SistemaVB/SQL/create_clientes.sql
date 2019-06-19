@@ -42,8 +42,7 @@ create procedure sp_editarcli
 @endereco varchar(100),
 @telefone varchar(30),
 @email varchar(60),
-@turno varchar(30),
-@data_contratado datetime,
+@data_cadastro datetime,
 @mensagem varchar(100) output
 as
 begin
@@ -53,8 +52,7 @@ begin
 	sexo = @sexo, 
 	endereco = @endereco,
 	telefone = @telefone,
-	email = @email,
-	data_cadastro = @data_contratado
+	email = @email
 	where cpf = @cpf
 
 	set @mensagem = 'Dados atualizados com sucesso!'

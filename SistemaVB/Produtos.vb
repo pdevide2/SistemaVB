@@ -1,16 +1,13 @@
 ﻿Imports System.Data.SqlClient
 
 
-Public Class Clientes
+Public Class Produtos
     Private intOperacao As Integer = Operacao.Consulta
-    Private Sub Clientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub Produtos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         intOperacao = Operacao.Consulta
         HabilitarCampos(intOperacao)
 
         StatusBotoes(intOperacao)
-
-
-        txtBuscaCPF.Visible = False
         Listar()
     End Sub
 
@@ -43,7 +40,7 @@ Public Class Clientes
         Dim da As SqlDataAdapter
         Try
             abrir()
-            da = New SqlDataAdapter("select * from Clientes", conn)
+            da = New SqlDataAdapter("select * from Produtos", conn)
             da.Fill(dt)
             dg.DataSource = dt
 
@@ -58,18 +55,14 @@ Public Class Clientes
     End Sub
 
     Private Sub FormatarDG()
-        dg.Columns(0).Visible = False
+        dg.Columns(0).HeaderText = "ID"
         dg.Columns(1).HeaderText = "Nome"
-        dg.Columns(2).HeaderText = "Sexo"
-        dg.Columns(2).Width = 70
-        dg.Columns(3).HeaderText = "CPF"
-        dg.Columns(3).Visible = False
-        dg.Columns(4).HeaderText = "Endereço"
-        dg.Columns(5).HeaderText = "Telefone"
-        dg.Columns(6).HeaderText = "E-mail"
-        dg.Columns(6).Width = 130
-        dg.Columns(7).HeaderText = "Data Cadastro"
-        dg.Columns(7).Width = 90
+        dg.Columns(2).HeaderText = "Descrição"
+        dg.Columns(2).Width = 200
+        dg.Columns(3).HeaderText = "Quantidade"
+        dg.Columns(3).Visible = True
+        dg.Columns(4).HeaderText = "Valor R$"
+        dg.Columns(5).HeaderText = "Data de Cadastro"
 
 
     End Sub
@@ -82,50 +75,21 @@ Public Class Clientes
             Case Operacao.Novo, Operacao.Edicao
                 blnMode = True
         End Select
-
+        txtID.Enabled = False
         txtNome.Enabled = blnMode
-        txtCPF.Enabled = blnMode
-        txtEndereco.Enabled = blnMode
+        txtDescricao.Enabled = blnMode
         txtNome.Enabled = blnMode
-        txtTelefone.Enabled = blnMode
-        cbSexo.Enabled = blnMode
-        'cbTurno.Enabled = blnMode
-        'dtData.Enabled = blnMode
-        txtEmail.Enabled = blnMode
+        txtQuantidade.Enabled = blnMode
+        txtValor.Enabled = blnMode
 
     End Sub
 
     Private Sub Limpar()
         txtNome.Text = ""
-        txtCPF.Text = ""
-        txtEndereco.Text = ""
-        txtNome.Text = ""
-        txtTelefone.Text = ""
-        cbSexo.Text = ""
-        'cbTurno.Text = ""
-        'dtData.Value = DateTime.Now
-
-    End Sub
-
-    Private Sub RbNome_CheckedChanged(sender As Object, e As EventArgs) Handles rbNome.CheckedChanged
-
-        txtBuscaCPF.Text = ""
-        txtBuscar.Text = ""
-        txtBuscar.Visible = True
-        txtBuscaCPF.Visible = False
-        txtBuscar.Focus()
-
-    End Sub
-
-    Private Sub RbCPF_CheckedChanged(sender As Object, e As EventArgs) Handles rbCPF.CheckedChanged
-
-        txtBuscaCPF.Top = 7
-        txtBuscaCPF.Text = ""
-        txtBuscar.Text = ""
-        txtBuscar.Visible = False
-        txtBuscaCPF.Visible = True
-        txtBuscaCPF.Focus()
-
+        txtDescricao.Text = ""
+        txtQuantidade.Text = ""
+        txtID.Text = 0
+        txtValor.Text = ""
     End Sub
 
     Private Sub BtnEditar_Click(sender As Object, e As EventArgs) Handles btnEditar.Click
@@ -152,19 +116,22 @@ Public Class Clientes
             Try
                 abrir()
                 If intOperacao = Operacao.Novo Then
-                    cmd = New SqlCommand("sp_salvarcli", conn)
+                    cmd = New SqlCommand("sp_salvarpro", conn)
                 Else
-                    cmd = New SqlCommand("sp_editarcli", conn)
+                    cmd = New SqlCommand("sp_editarpro", conn)
                 End If
-
+                Dim pID As Integer
+                If txtID.Text.Equals("") Then
+                    pID = 0
+                Else
+                    pID = CInt(txtID.Text)
+                End If
                 cmd.CommandType = CommandType.StoredProcedure
+                cmd.Parameters.AddWithValue("@ID_PRODUTO", pID)
                 cmd.Parameters.AddWithValue("@nome", txtNome.Text)
-                cmd.Parameters.AddWithValue("@sexo", cbSexo.Text)
-                cmd.Parameters.AddWithValue("@cpf", txtCPF.Text)
-                cmd.Parameters.AddWithValue("@endereco", txtEndereco.Text)
-                cmd.Parameters.AddWithValue("@telefone", txtTelefone.Text)
-                cmd.Parameters.AddWithValue("@email", txtEmail.Text)
-                'cmd.Parameters.AddWithValue("@turno", cbTurno.Text)
+                cmd.Parameters.AddWithValue("@descricao", txtDescricao.Text)
+                cmd.Parameters.AddWithValue("@quantidade", txtQuantidade.Text)
+                cmd.Parameters.AddWithValue("valor", CDbl(txtValor.Text))
                 cmd.Parameters.AddWithValue("@data_cadastro", DateTime.Now.Date)
                 cmd.Parameters.Add("@mensagem", SqlDbType.VarChar, 100).Direction = 2
 
@@ -192,7 +159,7 @@ Public Class Clientes
 
     Private Function ValidaCampos() As Boolean
         ValidaCampos = False
-        If txtCPF.Text = "" Or txtNome.Text = "" Then
+        If txtNome.Text = "" Or txtDescricao.Text = "" Then
             ValidaCampos = True
         End If
     End Function
@@ -202,16 +169,11 @@ Public Class Clientes
         btnNovo.Enabled = True
         btnEditar.Enabled = True
         btnExcluir.Enabled = True
-
-        txtCPF.Enabled = False
+        txtID.Text = dg.CurrentRow.Cells(0).Value
         txtNome.Text = dg.CurrentRow.Cells(1).Value
-        cbSexo.Text = dg.CurrentRow.Cells(2).Value
-        txtCPF.Text = dg.CurrentRow.Cells(3).Value
-        txtEndereco.Text = dg.CurrentRow.Cells(4).Value
-        txtTelefone.Text = dg.CurrentRow.Cells(5).Value
-        txtEmail.Text = dg.CurrentRow.Cells(6).Value
-        'cbTurno.Text = dg.CurrentRow.Cells(7).Value
-        'dtData.Value = dg.CurrentRow.Cells(8).Value
+        txtDescricao.Text = dg.CurrentRow.Cells(2).Value
+        txtQuantidade.Text = dg.CurrentRow.Cells(3).Value
+        txtValor.Text = dg.CurrentRow.Cells(4).Value
 
 
     End Sub
@@ -226,9 +188,9 @@ Public Class Clientes
 
             Try
                 abrir()
-                cmd = New SqlCommand("sp_ExcluircliPorCPF", conn)
+                cmd = New SqlCommand("sp_ExcluirproPorId", conn)
                 cmd.CommandType = CommandType.StoredProcedure
-                cmd.Parameters.AddWithValue("@cpf", txtCPF.Text)
+                cmd.Parameters.AddWithValue("@id_produto", txtID.Text)
                 cmd.Parameters.Add("@mensagem", SqlDbType.VarChar, 100).Direction = 2
                 cmd.ExecuteNonQuery()
                 Dim msg As String = cmd.Parameters("@mensagem").Value.ToString
@@ -256,43 +218,6 @@ Public Class Clientes
         HabilitarCampos(intOperacao)
         StatusBotoes(intOperacao)
         Limpar()
-
-    End Sub
-
-    Private Sub TxtBuscaCPF_TextChanged(sender As Object, e As EventArgs) Handles txtBuscaCPF.TextChanged
-        If dg.Rows.Count > 0 Then
-
-            If txtBuscaCPF.Text.Equals("   ,   ,   -  ") Then
-
-                Listar()
-
-            Else
-
-                BuscarPorCPF()
-
-            End If
-
-        End If
-    End Sub
-
-    Private Sub BuscarPorCPF()
-        Dim dt As New DataTable
-        Dim da As SqlDataAdapter
-        Try
-            abrir()
-            da = New SqlDataAdapter("sp_buscarcliCPF", conn)
-            da.SelectCommand.CommandType = CommandType.StoredProcedure
-            da.SelectCommand.Parameters.AddWithValue("@cpf", txtBuscaCPF.Text)
-            da.Fill(dt)
-            dg.DataSource = dt
-
-            ContarLinhas()
-            FormatarDG()
-        Catch ex As Exception
-            MessageBox.Show("Erro ao Listar " + ex.Message)
-        Finally
-            fechar()
-        End Try
 
     End Sub
 
@@ -331,7 +256,7 @@ Public Class Clientes
         Dim da As SqlDataAdapter
         Try
             abrir()
-            da = New SqlDataAdapter("sp_buscarcliNome", conn)
+            da = New SqlDataAdapter("sp_buscarproNome", conn)
             da.SelectCommand.CommandType = CommandType.StoredProcedure
             da.SelectCommand.Parameters.AddWithValue("@nome", txtBuscar.Text)
             da.Fill(dt)
@@ -346,4 +271,6 @@ Public Class Clientes
         End Try
 
     End Sub
+
+
 End Class
