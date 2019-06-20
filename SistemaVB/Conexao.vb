@@ -1,8 +1,8 @@
 ﻿Imports System.Data.SqlClient
 Module Conexao
 
-    'Public servidor As String = ".\SQL2017DEV"
-    Public servidor As String = ".\DEVELOPER"
+    Public servidor As String = ".\SQL2017DEV"
+    'Public servidor As String = ".\DEVELOPER"
 
     'Public conn As New SqlConnection("Server = .\DEVELOPER; Database=dbSistemaVB; Trusted_Connection=True")
     Public conn As New SqlConnection("Server = " & servidor & "; Database=dbSistemaVB; Trusted_Connection=True")

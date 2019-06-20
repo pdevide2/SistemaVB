@@ -22,6 +22,7 @@ Partial Class Principal
     'Não o modifique usando o editor de códigos.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Principal))
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.CadastrosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -33,6 +34,10 @@ Partial Class Principal
         Me.RegistrarVendaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListaDeVendasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SairToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblUsuario = New System.Windows.Forms.Label()
+        Me.lblHoraSistema = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -42,7 +47,7 @@ Partial Class Principal
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CadastrosToolStripMenuItem, Me.VendasToolStripMenuItem, Me.SairToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(800, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1242, 24)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -82,19 +87,19 @@ Partial Class Principal
         Me.VendasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RegistrarVendaToolStripMenuItem, Me.ListaDeVendasToolStripMenuItem})
         Me.VendasToolStripMenuItem.Image = CType(resources.GetObject("VendasToolStripMenuItem.Image"), System.Drawing.Image)
         Me.VendasToolStripMenuItem.Name = "VendasToolStripMenuItem"
-        Me.VendasToolStripMenuItem.Size = New System.Drawing.Size(72, 20)
+        Me.VendasToolStripMenuItem.Size = New System.Drawing.Size(73, 20)
         Me.VendasToolStripMenuItem.Text = "Vendas"
         '
         'RegistrarVendaToolStripMenuItem
         '
         Me.RegistrarVendaToolStripMenuItem.Name = "RegistrarVendaToolStripMenuItem"
-        Me.RegistrarVendaToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
+        Me.RegistrarVendaToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
         Me.RegistrarVendaToolStripMenuItem.Text = "Registrar Venda"
         '
         'ListaDeVendasToolStripMenuItem
         '
         Me.ListaDeVendasToolStripMenuItem.Name = "ListaDeVendasToolStripMenuItem"
-        Me.ListaDeVendasToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
+        Me.ListaDeVendasToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
         Me.ListaDeVendasToolStripMenuItem.Text = "Lista de Vendas"
         '
         'SairToolStripMenuItem
@@ -103,16 +108,57 @@ Partial Class Principal
         Me.SairToolStripMenuItem.Size = New System.Drawing.Size(38, 20)
         Me.SairToolStripMenuItem.Text = "Sair"
         '
+        'Timer1
+        '
+        Me.Timer1.Enabled = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
+        Me.Label1.Location = New System.Drawing.Point(1006, 34)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(58, 13)
+        Me.Label1.TabIndex = 1
+        Me.Label1.Text = "Bem Vindo"
+        '
+        'lblUsuario
+        '
+        Me.lblUsuario.AutoSize = True
+        Me.lblUsuario.BackColor = System.Drawing.Color.Transparent
+        Me.lblUsuario.Location = New System.Drawing.Point(1064, 34)
+        Me.lblUsuario.Name = "lblUsuario"
+        Me.lblUsuario.Size = New System.Drawing.Size(10, 13)
+        Me.lblUsuario.TabIndex = 2
+        Me.lblUsuario.Text = "-"
+        '
+        'lblHoraSistema
+        '
+        Me.lblHoraSistema.AutoSize = True
+        Me.lblHoraSistema.BackColor = System.Drawing.Color.Transparent
+        Me.lblHoraSistema.Location = New System.Drawing.Point(1006, 66)
+        Me.lblHoraSistema.Name = "lblHoraSistema"
+        Me.lblHoraSistema.Size = New System.Drawing.Size(10, 13)
+        Me.lblHoraSistema.TabIndex = 4
+        Me.lblHoraSistema.Text = "-"
+        '
         'Principal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoSize = True
         Me.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(1242, 450)
+        Me.Controls.Add(Me.lblHoraSistema)
+        Me.Controls.Add(Me.lblUsuario)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.MenuStrip1)
+        Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "Principal"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Principal"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
@@ -130,4 +176,8 @@ Partial Class Principal
     Friend WithEvents SairToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem1 As ToolStripSeparator
     Friend WithEvents ClientesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Timer1 As Timer
+    Friend WithEvents Label1 As Label
+    Friend WithEvents lblUsuario As Label
+    Friend WithEvents lblHoraSistema As Label
 End Class

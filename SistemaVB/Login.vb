@@ -9,6 +9,7 @@ Public Class Login
             txtSenha.Text = ""
             txtUsuario.Focus()
         Else
+            usuarioNome = Trim(txtUsuario.Text)
             Me.Hide()
             Dim form = New Principal
             form.ShowDialog()

@@ -7,4 +7,6 @@
         Exclusao = 3
     End Enum
 
+    Public usuarioNome As String = ""
+
 End Module
