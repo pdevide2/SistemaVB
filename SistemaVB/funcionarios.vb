@@ -43,7 +43,7 @@ Public Class funcionarios
         Dim da As SqlDataAdapter
         Try
             abrir()
-            da = New SqlDataAdapter("select * from funcionarios", conn)
+            da = New SqlDataAdapter("select [id_func], [nome], [sexo], [cpf], [endereco], [telefone], [email], [turno], [data_contratado] from funcionarios", conn)
             da.Fill(dt)
             dg.DataSource = dt
 

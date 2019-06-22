@@ -39,4 +39,11 @@
     Private Sub Principal_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         Application.Exit()
     End Sub
+
+    Private Sub ListaDeVendasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListaDeVendasToolStripMenuItem.Click
+        Dim form = New ListaVendas
+        form.MdiParent = Me
+        form.Show()
+
+    End Sub
 End Class

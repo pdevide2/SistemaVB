@@ -87,6 +87,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Funcoes.vb" />
+    <Compile Include="ListaVendas.Designer.vb">
+      <DependentUpon>ListaVendas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ListaVendas.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Login.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="funcionarios.resx">
       <DependentUpon>funcionarios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListaVendas.resx">
+      <DependentUpon>ListaVendas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.vb</DependentUpon>

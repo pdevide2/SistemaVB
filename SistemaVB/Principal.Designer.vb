@@ -62,24 +62,24 @@ Partial Class Principal
         'ProdutosToolStripMenuItem
         '
         Me.ProdutosToolStripMenuItem.Name = "ProdutosToolStripMenuItem"
-        Me.ProdutosToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ProdutosToolStripMenuItem.Size = New System.Drawing.Size(142, 22)
         Me.ProdutosToolStripMenuItem.Text = "Produtos"
         '
         'FuncionáriosToolStripMenuItem
         '
         Me.FuncionáriosToolStripMenuItem.Name = "FuncionáriosToolStripMenuItem"
-        Me.FuncionáriosToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.FuncionáriosToolStripMenuItem.Size = New System.Drawing.Size(142, 22)
         Me.FuncionáriosToolStripMenuItem.Text = "Funcionários"
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(177, 6)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(139, 6)
         '
         'ClientesToolStripMenuItem
         '
         Me.ClientesToolStripMenuItem.Name = "ClientesToolStripMenuItem"
-        Me.ClientesToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ClientesToolStripMenuItem.Size = New System.Drawing.Size(142, 22)
         Me.ClientesToolStripMenuItem.Text = "Clientes"
         '
         'VendasToolStripMenuItem
@@ -93,13 +93,13 @@ Partial Class Principal
         'RegistrarVendaToolStripMenuItem
         '
         Me.RegistrarVendaToolStripMenuItem.Name = "RegistrarVendaToolStripMenuItem"
-        Me.RegistrarVendaToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
+        Me.RegistrarVendaToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.RegistrarVendaToolStripMenuItem.Text = "Registrar Venda"
         '
         'ListaDeVendasToolStripMenuItem
         '
         Me.ListaDeVendasToolStripMenuItem.Name = "ListaDeVendasToolStripMenuItem"
-        Me.ListaDeVendasToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
+        Me.ListaDeVendasToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ListaDeVendasToolStripMenuItem.Text = "Lista de Vendas"
         '
         'SairToolStripMenuItem

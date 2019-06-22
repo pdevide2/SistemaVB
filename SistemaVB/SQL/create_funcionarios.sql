@@ -30,7 +30,9 @@ if exists(select 1 from funcionarios where cpf=@cpf)
 	SET @MENSAGEM = 'Numero do CPF '+@cpf + ' já está registrado!'
 else
 begin
-	insert into funcionarios values(@nome,@sexo,@cpf,@endereco,@telefone,@email,@turno,@data_contratado)
+	insert into funcionarios 
+	(nome,sexo,cpf,endereco,telefone,email,turno,data_contratado)
+	values(@nome,@sexo,@cpf,@endereco,@telefone,@email,@turno,@data_contratado)
 	set @mensagem = 'Funcionario registrado com sucesso!'
 end
 
