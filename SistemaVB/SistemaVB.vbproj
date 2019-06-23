@@ -168,6 +168,11 @@
     <Compile Include="Vendas.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="VendasDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VendasDataSet.xsd</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Clientes.resx">
@@ -201,6 +206,7 @@
       <DependentUpon>frmRelVendas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Rel\RelProdutos.rdlc" />
+    <EmbeddedResource Include="Rel\RelVenda.rdlc" />
     <EmbeddedResource Include="Vendas.resx">
       <DependentUpon>Vendas.vb</DependentUpon>
     </EmbeddedResource>
@@ -227,6 +233,17 @@
     </None>
     <None Include="ProdutosDataSet.xss">
       <DependentUpon>ProdutosDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="VendasDataSet.xsc">
+      <DependentUpon>VendasDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="VendasDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>VendasDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="VendasDataSet.xss">
+      <DependentUpon>VendasDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

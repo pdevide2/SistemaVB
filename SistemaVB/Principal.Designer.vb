@@ -40,6 +40,8 @@ Partial Class Principal
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblUsuario = New System.Windows.Forms.Label()
         Me.lblHoraSistema = New System.Windows.Forms.Label()
+        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.VendasToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -106,7 +108,7 @@ Partial Class Principal
         '
         'RelatóriosToolStripMenuItem
         '
-        Me.RelatóriosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CatalogoDeProdutosToolStripMenuItem})
+        Me.RelatóriosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CatalogoDeProdutosToolStripMenuItem, Me.ToolStripMenuItem2, Me.VendasToolStripMenuItem1})
         Me.RelatóriosToolStripMenuItem.Image = CType(resources.GetObject("RelatóriosToolStripMenuItem.Image"), System.Drawing.Image)
         Me.RelatóriosToolStripMenuItem.Name = "RelatóriosToolStripMenuItem"
         Me.RelatóriosToolStripMenuItem.Size = New System.Drawing.Size(87, 20)
@@ -158,6 +160,17 @@ Partial Class Principal
         Me.lblHoraSistema.TabIndex = 4
         Me.lblHoraSistema.Text = "-"
         '
+        'ToolStripMenuItem2
+        '
+        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(186, 6)
+        '
+        'VendasToolStripMenuItem1
+        '
+        Me.VendasToolStripMenuItem1.Name = "VendasToolStripMenuItem1"
+        Me.VendasToolStripMenuItem1.Size = New System.Drawing.Size(189, 22)
+        Me.VendasToolStripMenuItem1.Text = "Vendas"
+        '
         'Principal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -198,4 +211,6 @@ Partial Class Principal
     Friend WithEvents lblHoraSistema As Label
     Friend WithEvents RelatóriosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CatalogoDeProdutosToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem2 As ToolStripSeparator
+    Friend WithEvents VendasToolStripMenuItem1 As ToolStripMenuItem
 End Class

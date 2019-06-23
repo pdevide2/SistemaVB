@@ -52,4 +52,10 @@
         form.MdiParent = Me
         form.Show()
     End Sub
+
+    Private Sub VendasToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles VendasToolStripMenuItem1.Click
+        Dim form = New frmRelVendas
+        form.MdiParent = Me
+        form.Show()
+    End Sub
 End Class
