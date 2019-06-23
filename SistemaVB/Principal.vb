@@ -46,4 +46,10 @@
         form.Show()
 
     End Sub
+
+    Private Sub CatalogoDeProdutosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CatalogoDeProdutosToolStripMenuItem.Click
+        Dim form = New frmRelProdutos
+        form.MdiParent = Me
+        form.Show()
+    End Sub
 End Class
