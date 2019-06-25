@@ -50,6 +50,7 @@ Partial Class Vendas
         Me.txtEstoque = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnRecibo = New System.Windows.Forms.Button()
         CType(Me.dg, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -287,12 +288,22 @@ Partial Class Vendas
         Me.Button1.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'btnRecibo
+        '
+        Me.btnRecibo.Image = CType(resources.GetObject("btnRecibo.Image"), System.Drawing.Image)
+        Me.btnRecibo.Location = New System.Drawing.Point(683, 434)
+        Me.btnRecibo.Name = "btnRecibo"
+        Me.btnRecibo.Size = New System.Drawing.Size(69, 69)
+        Me.btnRecibo.TabIndex = 48
+        Me.btnRecibo.UseVisualStyleBackColor = True
+        '
         'Vendas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
         Me.ClientSize = New System.Drawing.Size(762, 509)
+        Me.Controls.Add(Me.btnRecibo)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.txtEstoque)
         Me.Controls.Add(Me.Label9)
@@ -356,4 +367,5 @@ Partial Class Vendas
     Friend WithEvents txtEstoque As TextBox
     Friend WithEvents Label9 As Label
     Friend WithEvents Button1 As Button
+    Friend WithEvents btnRecibo As Button
 End Class

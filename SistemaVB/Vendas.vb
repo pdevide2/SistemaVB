@@ -382,4 +382,10 @@ Public Class Vendas
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         LocalizarVenda()
     End Sub
+
+    Private Sub BtnRecibo_Click(sender As Object, e As EventArgs) Handles btnRecibo.Click
+        Dim form As New ReciboVenda
+        form.Num_venda = txtNum.Text
+        form.Show()
+    End Sub
 End Class
