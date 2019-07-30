@@ -16,4 +16,34 @@ Module Conexao
             conn.Close()
         End If
     End Sub
+
+    Public Function PesquisarFkListaBLL(ByVal cmdSQL As String) As ArrayList
+
+        Dim dt As New DataTable
+        Dim da As SqlDataAdapter
+        Dim myArrList As New ArrayList()
+
+        Try
+            abrir()
+            da = New SqlDataAdapter(cmdSQL, conn)
+            da.Fill(dt)
+
+            For Each datarow As DataRow In dt.Rows
+
+                myArrList.Add(datarow)
+
+            Next
+
+            Return myArrList
+        Catch ex As Exception
+            MessageBox.Show("Erro ao Listar " + ex.Message)
+            Return myArrList
+        Finally
+            fechar()
+        End Try
+
+
+
+    End Function
+
 End Module

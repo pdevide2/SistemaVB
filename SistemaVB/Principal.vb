@@ -58,4 +58,11 @@
         form.MdiParent = Me
         form.Show()
     End Sub
+
+    Private Sub TesteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TesteToolStripMenuItem.Click
+        Dim form = New Test1
+        form.MdiParent = Me
+        form.Show()
+
+    End Sub
 End Class

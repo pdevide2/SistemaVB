@@ -168,6 +168,12 @@
     <Compile Include="Rel\ReciboVenda.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Test1.Designer.vb">
+      <DependentUpon>Test1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Test1.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Vendas.designer.vb">
       <DependentUpon>Vendas.vb</DependentUpon>
     </Compile>
@@ -217,6 +223,9 @@
     <EmbeddedResource Include="Rel\RelProdutos.rdlc" />
     <EmbeddedResource Include="Rel\RelVenda.rdlc" />
     <EmbeddedResource Include="Rel\ReciboVenda.rdlc" />
+    <EmbeddedResource Include="Test1.resx">
+      <DependentUpon>Test1.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vendas.resx">
       <DependentUpon>Vendas.vb</DependentUpon>
     </EmbeddedResource>
